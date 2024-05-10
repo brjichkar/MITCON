@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/drawerColor"
+    android:gravity="center_vertical"
+    tools:context=".ui.mainScreen.MainActivity">
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom"/>
+
+<!--        <me.ibrahimsn.lib.SmoothBottomBar-->
+<!--            android:id="@+id/bottomBar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            app:backgroundColor="@color/drawerColor"-->
+<!--            app:cornerRadius="8dp"-->
+<!--            app:corners="top_left|bottom_right"-->
+<!--            app:iconSize="16dp"-->
+<!--            app:iconTint="@color/white"-->
+<!--            app:iconTintActive="@color/barChartColor"-->
+<!--            app:indicatorColor="#2DFFFFFF"-->
+<!--            app:indicatorRadius="10dp"-->
+<!--            app:itemPadding="10dp"-->
+<!--            app:menu="@menu/menu_bottom"-->
+<!--            app:sideMargins="8dp"-->
+<!--            app:textColor="@color/white"-->
+<!--            app:textSize="12sp" />-->
+
+
+    <include
+        android:id="@+id/activity_main_content"
+        layout="@layout/activity_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="content"
+        android:layout_above="@id/bottomBar"/>
+</RelativeLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "304420780350",
+    "project_id": "mitcon-task-management-c5110",
+    "storage_bucket": "mitcon-task-management-c5110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304420780350:android:6c6eaf3f01ed90989b946f",
+        "android_client_info": {
+          "package_name": "com.android.mitcontaskmanagement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-VIRhdNDAzUpHr9qW8KTTTkurEl-_fXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

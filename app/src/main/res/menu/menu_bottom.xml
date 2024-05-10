@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/first_fragment"
+        android:title="Home"
+        android:contentDescription="Home"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/second_fragment"
+        android:title="Statistics"
+        android:contentDescription="Statistics"
+        android:icon="@drawable/stats"
+        android:onClick="onOptionsItemSelected"/>
+
+    <item
+        android:id="@+id/third_fragment"
+        android:title="Profile"
+        android:contentDescription="Profile"
+        android:icon="@drawable/profile"
+        android:onClick="onOptionsItemSelected"/>
+
+    <item
+        android:id="@+id/fourth_fragment"
+        android:title="Calender"
+        android:contentDescription="Calender"
+        android:icon="@drawable/baseline_calendar_month_24"
+        android:onClick="onOptionsItemSelected"/>
+
+</menu>

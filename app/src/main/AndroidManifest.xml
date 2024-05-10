@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.android.mitcontaskmanagement.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/taskify_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/taskify_logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Taskify">
+        <activity
+            android:name="com.android.mitcontaskmanagement.ui.onBoardingScreen.OnBoardingActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.Taskify.NoStatusBarTheme" />
+        <activity
+            android:name="com.android.mitcontaskmanagement.ui.splashScreen.SplashActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:theme="@style/Theme.Taskify.NoStatusBarTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.android.mitcontaskmanagement.ui.addTaskScreen.AddTaskActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.Taskify.NoStatusBarTheme" />
+        <activity
+            android:name="com.android.mitcontaskmanagement.ui.auth.AuthActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.Taskify.NoStatusBarTheme" />
+        <activity
+            android:name="com.android.mitcontaskmanagement.ui.mainScreen.MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.Taskify" />
+
+        <service android:name="com.android.mitcontaskmanagement.service.TimerService" />
+    </application>
+
+</manifest>
