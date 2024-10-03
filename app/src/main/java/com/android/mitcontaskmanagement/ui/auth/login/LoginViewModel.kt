@@ -34,13 +34,13 @@ class LoginViewModel @Inject constructor(private val authRepo: AuthRepo) : ViewM
     private fun verifyUserInput(): Boolean {
         //val regex =  "^(\\+91[\\-\\s]?)?[0]?(91)?[789]\\d{9}\$"
         //return _email.value.matches(Regex(regex)) && _password.value.isNotEmpty()
-        return _email.value.isNotEmpty() && _password.value.isNotEmpty()
+        return _email.value.isNotEmpty()
     }
 
     fun onLoginButtonPressed() = viewModelScope.launch {
         if (verifyUserInput()) {
             _loginState.emit(Resource.Loading())
-            _loginState.emit(authRepo.loginUser(_email.value, _password.value))
+            _loginState.emit(authRepo.loginUser(_email.value))
         } else
             _loginState.emit(Resource.Error("Enter details correctly"))
     }

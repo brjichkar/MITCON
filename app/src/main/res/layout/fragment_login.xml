@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:drawableStart="@drawable/lock"
+            android:drawableStart="@drawable/otp_pass"
             android:drawableTint="@color/authTextFieldIconTint"
             android:hint="Password"
             android:visibility="gone"

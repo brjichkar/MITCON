@@ -60,6 +60,13 @@ android {
     }
 }
 
+configurations {
+    all {
+        exclude(module="guava-jdk5")
+        exclude(group = "com.google.guava", module = "listenablefuture")
+    }
+}
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.13.1")
@@ -91,11 +98,14 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     /* coroutines support for firebase operations */
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+
 // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+
 // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+
 // optional - helpers for implementing LifecycleOwner in a Service
     implementation("androidx.lifecycle:lifecycle-service:2.7.0")
     implementation(platform("com.google.firebase:firebase-bom:28.1.0"))
@@ -107,15 +117,19 @@ dependencies {
     implementation("com.airbnb.android:lottie:6.4.0")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+
     // Allow references to generated code
     implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 //navigation
+
     val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
 //timber
     implementation("com.jakewharton.timber:timber:5.0.1")
+
 //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("com.github.bumptech.glide:glide:4.16.0")
@@ -127,6 +141,7 @@ dependencies {
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
+
 // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
     implementation("io.coil-kt:coil:2.6.0")
@@ -137,18 +152,33 @@ dependencies {
     implementation("com.mikhaellopez:circularprogressbar:3.1.0")
     implementation("com.github.beksomega:loopinglayout:0.5.0")
     implementation("com.diogobernardino:williamchart:3.11.0")
+
 //dots
     implementation("com.tbuonomo:dotsindicator:5.0")
 
  // bottom navigation
-   // implementation ("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
+    implementation ("com.google.android.material:material:1.3.0-alpha03")
     // adding support for sdp for all layout
     implementation("com.intuit.sdp:sdp-android:1.0.6")
+    implementation ("com.wdullaer:materialdatetimepicker:4.2.3")
 
-        implementation ("com.wdullaer:materialdatetimepicker:4.2.3")
     //Navigation Architecture Component
     implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation ("com.github.PratikFagadiya:AnimatedSmoothBottomNavigation-JetpackCompose:1.1.1")
     implementation ("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
+
+    //google calender
+
+    implementation ("com.google.oauth-client:google-oauth-client-jetty:1.23.0")
+    implementation ("com.google.apis:google-api-services-calendar:v3-rev305-1.23.0")
+    implementation ("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava")
+    implementation ("com.google.guava:guava:28.1-android")
+    implementation ("com.google.api-client:google-api-client-android:1.23.0") {
+        exclude(group="org.apache.httpcomponents")
+    }
+
+    //so that we can easily control permissions
+    implementation ("pub.devrel:easypermissions:3.0.0")
+
 }

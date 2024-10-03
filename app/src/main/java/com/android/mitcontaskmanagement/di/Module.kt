@@ -13,7 +13,7 @@ import com.android.mitcontaskmanagement.data.local.dataSource.DataStorePreferenc
 import com.android.mitcontaskmanagement.data.local.dataSource.PreferencesDataSource
 import com.android.mitcontaskmanagement.data.local.dataSource.SharedPreferencesDataSource
 import com.android.mitcontaskmanagement.data.local.room.TaskDAO
-import com.android.mitcontaskmanagement.data.local.room.TaskifyDatabase
+import com.android.mitcontaskmanagement.data.local.room.MitconDatabase
 import com.android.mitcontaskmanagement.data.models.mappper.TaskMapper
 import com.android.mitcontaskmanagement.data.models.mappper.UserMapper
 import com.android.mitcontaskmanagement.data.remote.harperDb.Api
@@ -83,11 +83,10 @@ object Module {
     @Singleton
     fun provideOkHttp(
         loggingInterceptor: HttpLoggingInterceptor,
-        authInterceptor: AuthInterceptor
+    //    authInterceptor: AuthInterceptor
     ): Call.Factory {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(authInterceptor)
             .callTimeout(1, TimeUnit.MINUTES)
             .readTimeout(1, TimeUnit.MINUTES)
             .writeTimeout(1, TimeUnit.MINUTES)
@@ -99,7 +98,7 @@ object Module {
     fun providesRetrofit(
         callFactory: Call.Factory
     ): Retrofit = Retrofit.Builder()
-        .baseUrl("http://www.google.com")
+        .baseUrl("https://todo.riteshdayama.in/api/")
         .callFactory(callFactory)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
@@ -119,14 +118,14 @@ object Module {
     @Provides
     @Singleton
     fun providesTaskifyDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
-        context, TaskifyDatabase::class.java, "TaskifyDatabase"
+        context, MitconDatabase::class.java, "TaskifyDatabase"
     )
         .fallbackToDestructiveMigration()
         .build()
 
     @Provides
     @Singleton
-    fun providesTaskDao(taskifyDatabase: TaskifyDatabase): TaskDAO = taskifyDatabase.getTaskDao()
+    fun providesTaskDao(taskifyDatabase: MitconDatabase): TaskDAO = taskifyDatabase.getTaskDao()
 
     @Provides
     fun providesContext(@ApplicationContext context: Context): Context = context

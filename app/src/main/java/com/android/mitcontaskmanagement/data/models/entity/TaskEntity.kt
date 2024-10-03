@@ -7,7 +7,8 @@ import com.android.mitcontaskmanagement.util.TaskType
 import java.io.Serializable
 
 @Entity(tableName = "task_table")
-data class TaskEntity(
+data class
+TaskEntity(
     val email: String,
     val task_title: String,
     val task_description: String,

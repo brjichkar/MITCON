@@ -29,15 +29,15 @@ class AuthRepo @Inject constructor(
     fun isUserLoggedIn() =
         authDataSource.isUserLoggedIn() && preferencesDataSource.getUserData() != null
 
-    suspend fun loginUser(email: String, password: String): Resource<Unit> =
+    suspend fun loginUser(phone: String): Resource<Unit> =
         withContext(Dispatchers.IO) {
             if (!networkUtils.checkInternetConnection())
                 return@withContext Resource.Error(
                     message = "No internet",
                     errorType = ErrorTYpe.NO_INTERNET
                 )
-            val resource = authDataSource.loginUser(email, password)
-            return@withContext getUserDataAfterLogin(resource, email)
+            val resource = authDataSource.loginUser(phone)
+            return@withContext getUserDataAfterLogin(resource, phone)
         }
 
 
@@ -55,18 +55,23 @@ class AuthRepo @Inject constructor(
     )
 
     private suspend fun <T> getUserDataAfterLogin(
-        authResource: Resource<T>,
-        email: String
+        loginResponse: Resource<T>,
+        phone: String
     ): Resource<Unit> {
-        val harperResource = harperDbAuthDataSource.getUserData(email)
-        if (harperResource is Resource.Error || authResource is Resource.Error) {
-            if (harperResource is Resource.Error && authResource is Resource.Success) {
-                if (harperResource.message != "User does not exist") logoutUser()
-                return Resource.Error(message = harperResource.message)
-            }
-            return Resource.Error(message = authResource.message, errorType = ErrorTYpe.UNKNOWN)
+//        val harperResource = harperDbAuthDataSource.getUserData(phone)
+//        if (harperResource is Resource.Error || authResource is Resource.Error) {
+//            if (harperResource is Resource.Error && authResource is Resource.Success) {
+//                if (harperResource.message != "User does not exist") logoutUser()
+//                return Resource.Error(message = harperResource.message)
+//            }
+//            return Resource.Error(message = authResource.message, errorType = ErrorTYpe.UNKNOWN)
+//        }
+
+        // do not delete until user login is stored
+        //preferencesDataSource.saveUserData(userMapper.toDomainModel(harperResource.data!!))
+        if (loginResponse is Resource.Error) {
+            return Resource.Error(message = loginResponse.message, errorType = ErrorTYpe.UNKNOWN)
         }
-        preferencesDataSource.saveUserData(userMapper.toDomainModel(harperResource.data!!))
         return Resource.Success(message = "User logged in successfully")
     }
 

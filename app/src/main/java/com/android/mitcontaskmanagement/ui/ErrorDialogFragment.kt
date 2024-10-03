@@ -12,7 +12,8 @@ import com.android.mitcontaskmanagement.databinding.FragmentErrorDialogBinding
 import com.android.mitcontaskmanagement.util.ErrorTYpe
 import com.android.mitcontaskmanagement.util.setErrorImage
 
-class ErrorDialogFragment(private val errorTYpe: ErrorTYpe? = null) :
+class
+ErrorDialogFragment(private val errorTYpe: ErrorTYpe? = null) :
     DialogFragment(R.layout.fragment_error_dialog) {
 
     private lateinit var binding: FragmentErrorDialogBinding

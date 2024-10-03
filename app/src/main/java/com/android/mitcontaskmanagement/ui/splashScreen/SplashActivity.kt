@@ -6,9 +6,12 @@ import android.os.Handler
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.android.mitcontaskmanagement.R
+import com.android.mitcontaskmanagement.ui.auth.AuthActivity
+import com.android.mitcontaskmanagement.ui.auth.login.LoginFragment
 import com.android.mitcontaskmanagement.ui.mainScreen.MainActivity
 import com.android.mitcontaskmanagement.util.makeStatusBarTransparent
 import dagger.hilt.android.AndroidEntryPoint
+import com.android.mitcontaskmanagement.ui.onBoardingScreen.OnBoardingActivity
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
@@ -21,10 +24,13 @@ class SplashActivity : AppCompatActivity() {
         makeStatusBarTransparent()
         Handler().postDelayed(
             {
-
-                /* Create an Intent that will start the Menu-Activity. */ var  mainIntent: /*@@qhtglw@@*/Intent? = Intent(getApplicationContext(), /*@@owbkzd@@*/MainActivity::class.java)
-                startActivity(mainIntent)
-                finish()
+                val intent = if (!viewModel.isOnBoardingComplete()) {
+                    Intent(this, OnBoardingActivity::class.java)
+                } else if (viewModel.isUserLogged()) {
+                    Intent(this, MainActivity::class.java)
+                } else {
+                    Intent(this, AuthActivity::class.java)
+                }
 
                 startActivity(intent)
                 finish()

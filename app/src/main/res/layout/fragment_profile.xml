@@ -75,7 +75,7 @@
                 android:id="@+id/emailText"
                 style="@style/grayText"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Caption"
                 tools:text="vaibhavsam2511@gmail.com" />
 

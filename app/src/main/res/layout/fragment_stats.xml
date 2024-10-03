@@ -177,7 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="Tasks"
-            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Subtitle1" />
+            android:textAppearance="@style/TextAppearance.MdcTypographyStyles.Subtitle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/allTaskRecycler"
